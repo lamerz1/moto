@@ -17,8 +17,11 @@ class PageRepository {
     }
 
     public function get($page_alias) {
-        return $this->model->select(['pages.name', 'pages.alias', 'pages.text'])
+        return $this->model->select(['pages.name',
+                            'pages.alias',
+                            'pages.text'])
                         ->where('pages.alias', '=', $page_alias)
                         ->first();
     }
+
 }

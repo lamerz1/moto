@@ -86,7 +86,10 @@
             <p>
                 <a href="/catalog/{{ $moto->MarkAlias }}/{{ $moto->ModelAlias }}/{{ $moto->id }}.html">{{ $moto->MarkName }} {{ $moto->ModelName }}</a><br>
                 Год: {{ $moto->year }} <br>
+                Объём: {{ $moto->volume }} см<sup>3</sup>.<br>
+                Пробег: {{ $moto->mileage }} км.<br>
                 Цена: {{ $moto->price }} руб.
+                
             </p>
         </div>
         @endforeach
