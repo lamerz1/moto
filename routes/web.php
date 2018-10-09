@@ -12,10 +12,15 @@
  */
 
 // Главная
-Route::get('/', 'IndexController@index');
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'IndexController@index'
+]);
 
 // Список Моделей
-Route::get('/catalog/{mark_alias}/', 'CatalogController@mods')->where('mark_alias', '[a-z0-9\-]+');
+Route::get('/catalog/{mark_alias}/', 'CatalogController@mods')->where([
+    'mark_alias' => '[a-z0-9\-]+'
+]);
 
 // Список Мотоциклов
 Route::get('/catalog/{mark_alias}/{model_alias}/', 'CatalogController@listMotos')->where([
@@ -31,4 +36,9 @@ Route::get('/catalog/{mark_alias}/{model_alias}/{id}.html', 'CatalogController@m
 ]);
 
 // Обычная страница
-Route::get('/{page_alias}.html', 'PageController@index')->where('page_alias', '[a-z0-9\-]+');
+Route::get('/{page_alias}.html', [
+    'as' => 'page',
+    'uses' => 'PageController@index']
+)->where([
+    'page_alias', '[a-z0-9\-]+'
+]);
