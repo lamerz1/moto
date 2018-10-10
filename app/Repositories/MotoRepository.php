@@ -64,7 +64,7 @@ class MotoRepository {
     }
 
     // Список мотоциклов при клике на марку и модель
-    public function listMotos($mark_alias, $model_alias) {
+    public function getMotos($mark_alias, $model_alias) {
         return $this->model->select(['motos.id',
                             'marks.name AS MarkName',
                             'marks.alias AS MarkAlias',

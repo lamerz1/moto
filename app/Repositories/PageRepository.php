@@ -16,7 +16,7 @@ class PageRepository {
         $this->model = $page;
     }
 
-    public function get($page_alias) {
+    public function getPage($page_alias) {
         return $this->model->select(['pages.name',
                             'pages.alias',
                             'pages.text'])

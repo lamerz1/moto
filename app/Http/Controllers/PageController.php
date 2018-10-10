@@ -13,8 +13,8 @@ class PageController extends Controller
     }
     
     function index($page_alias) {
-        $pages = $this->page_rep->get($page_alias);
+        $page = $this->page_rep->getPage($page_alias);
 
-        return view('pages.index', ['pages' => $pages]);
+        return view('pages.index', ['page' => $page]);
     }
 }
