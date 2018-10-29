@@ -18,7 +18,10 @@ Route::get('/', [
 ]);
 
 // Список Моделей
-Route::get('/catalog/{mark_alias}/', 'CatalogController@mods')->where([
+Route::get('/catalog/{mark_alias}/', [
+    'as' => 'mark',
+    'uses' => 'CatalogController@mods']
+)->where([
     'mark_alias' => '[a-z0-9\-]+'
 ]);
 
