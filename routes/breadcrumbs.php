@@ -9,7 +9,7 @@ Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->push($page->name, route('page', $page));
 });
 
-Breadcrumbs::register('mark', function($breadcrumbs, $mods) {
+Breadcrumbs::register('mods', function($breadcrumbs, $mark) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($mods->name, route('mods', $mods));
+    $breadcrumbs->push($mark, route('mods', $mark));
 });
