@@ -15,9 +15,8 @@ class CatalogController extends Controller
     
     function mods($mark_alias) {
         $mods = $this->moto_rep->getMods($mark_alias);
-        $mark_name = 'asdasdsd';
         
-        return view('catalog.mods', ['mods' => $mods, 'mark_name' => $mark_name, 'mark_alias' => $mark_alias]);
+        return view('catalog.mods', ['mods' => $mods, 'mark_alias' => $mark_alias]);
     }
     
     function motos($mark_alias, $model_alias) {
