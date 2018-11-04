@@ -6,10 +6,10 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
 
 Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($page->name, route('page', $page));
+    $breadcrumbs->push($page, route('page', $page));
 });
 
 Breadcrumbs::register('mods', function($breadcrumbs, $mark) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($mark->name, route('mods', $mark));
+    $breadcrumbs->push($mark, route('mods', $mark));
 });

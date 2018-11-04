@@ -16,6 +16,18 @@ class MotoRepository {
         $this->model = $moto;
     }
 
+    // Получение данные кликнутой марки по её алиасу
+    public function getMark($mark_alias) {
+        return $this->model->select(['marks.name',
+                            'marks.text',
+                            'marks.logo'])
+                        ->join('models', 'models.id', '=', 'motos.model_id')
+                        ->join('marks', 'marks.id', '=', 'models.mark_id')
+                        ->where('marks.alias', '=', $mark_alias)
+                        ->where('motos.is_active', '=', 1)
+                        ->first();
+    }
+
     // Вывод списка марок на главной
     public function getMarks() {
         return $this->model->select(['marks.name',

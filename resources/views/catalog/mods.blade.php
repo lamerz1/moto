@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="border-bottom: 1px #000000 solid; padding-bottom: 20px;">
-    {{ Breadcrumbs::render('mods', $mark) }}
+    {{ Breadcrumbs::render('mods', $mark->name) }}
     <div><b>Модели</b></div>
     <div style="width: 800px;">
         @foreach ($mods as $mod)
