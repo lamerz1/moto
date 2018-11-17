@@ -28,9 +28,10 @@ class CatalogRepository {
                         ->first();
     }
 
-    // Получение имени кликнутой модели по её алиасу
-    public function getMod($mark_alias, $model_alias) {
-        return $this->model->select(['models.name'])
+    // Получение имени кликнутых марки и модели по её алиасу
+    public function getMarkMod($mark_alias, $model_alias) {
+        return $this->model->select(['marks.name AS MarkName',
+                            'models.name AS ModName'])
                         ->join('models', 'models.id', '=', 'motos.model_id')
                         ->join('marks', 'marks.id', '=', 'models.mark_id')
                         ->where('marks.alias', '=', $mark_alias)

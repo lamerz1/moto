@@ -14,8 +14,8 @@ Breadcrumbs::register('mods', function($breadcrumbs, $mark) {
     $breadcrumbs->push($mark, route('mods', $mark));
 });
 
-Breadcrumbs::register('motos', function($breadcrumbs, $mark, $mod) {
+Breadcrumbs::register('motos', function($breadcrumbs, $mark_mod) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($mark, route('mods', $mark));
-    $breadcrumbs->push($mod->name);
+    $breadcrumbs->push($mark_mod->MarkName, route('mods', $mark_mod));
+    $breadcrumbs->push($mark_mod->ModName);
 });

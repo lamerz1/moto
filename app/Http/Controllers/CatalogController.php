@@ -21,11 +21,14 @@ class CatalogController extends Controller
     }
     
     function motos($mark_alias, $model_alias) {
+        // Список мотоциклов
         $motos = $this->catalog_rep->getMotos($mark_alias, $model_alias);
-        $mark = $this->catalog_rep->getMark($mark_alias);
-        $mod = $this->catalog_rep->getMod($mark_alias, $model_alias);
         
-        return view('catalog.motos', ['motos' => $motos, 'mark'=> $mark, 'mod' => $mod, 'mark_alias' => $mark_alias, 'model_alias' => $model_alias]);
+        // Данные а марки и модели в одном объекте: потому что Breadcrumbs принимает по кроме самого $trait - лишь 1 аргумент
+        // Приходится имя марки и модели уместить в 1й переменной
+        $mark_mod = $this->catalog_rep->getMarkMod($mark_alias, $model_alias);
+        
+        return view('catalog.motos', ['motos' => $motos, 'mark_mod' => $mark_mod, 'mark_alias' => $mark_alias, 'model_alias' => $model_alias]);
     }
     
     function moto($mark_alias, $model_alias, $id) {
