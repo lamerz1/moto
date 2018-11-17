@@ -26,7 +26,10 @@ Route::get('/catalog/{mark_alias}/', [
 ]);
 
 // Список Мотоциклов
-Route::get('/catalog/{mark_alias}/{model_alias}/', 'CatalogController@motos')->where([
+Route::get('/catalog/{mark_alias}/{model_alias}/', [
+    'as' => 'motos',
+    'uses' => 'CatalogController@motos']
+)->where([
     'mark_alias' => '[a-z0-9\-]+',
     'model_alias' => '[a-z0-9\-]+'
 ]);

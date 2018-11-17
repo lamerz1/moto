@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Moto;
 
-class MotoRepository {
+class CatalogRepository {
 
     /**
      * Объект модели.
@@ -12,8 +12,8 @@ class MotoRepository {
      */
     protected $model;
 
-    public function __construct(Moto $moto) {
-        $this->model = $moto;
+    public function __construct(Moto $catalog) {
+        $this->model = $catalog;
     }
 
     // Получение данные кликнутой марки по её алиасу
@@ -24,6 +24,17 @@ class MotoRepository {
                         ->join('models', 'models.id', '=', 'motos.model_id')
                         ->join('marks', 'marks.id', '=', 'models.mark_id')
                         ->where('marks.alias', '=', $mark_alias)
+                        ->where('motos.is_active', '=', 1)
+                        ->first();
+    }
+
+    // Получение имени кликнутой модели по её алиасу
+    public function getMod($mark_alias, $model_alias) {
+        return $this->model->select(['models.name'])
+                        ->join('models', 'models.id', '=', 'motos.model_id')
+                        ->join('marks', 'marks.id', '=', 'models.mark_id')
+                        ->where('marks.alias', '=', $mark_alias)
+                        ->where('models.alias', '=', $model_alias)
                         ->where('motos.is_active', '=', 1)
                         ->first();
     }
